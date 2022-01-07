@@ -3,7 +3,7 @@
 import glob
 import subprocess
 import os.path as path
-from os import getcwd
+from os import getcwd, name as os_name
 from argparse import ArgumentParser
 
 def main():
@@ -20,20 +20,30 @@ def main():
         convert_with_inkscape(args.input, out_file, export_width, export_height)
 
 def convert_with_inkscape(in_file, out_file, export_width=128, export_height=128):
-    try:
-        inkscape_path = subprocess.check_output(["which", "inkscape"]).strip()
-    except subprocess.CalledProcessError:
-        raise SystemExit("ERROR: Inkscape needs to be installed to use this script.")
-
-    args = [
-        inkscape_path,
-        "--without-gui",
-        "-f", in_file,
-        "--export-area-page",
-        "-w", export_width,
-        "-h", export_height,
-        "--export-png=" + out_file
-    ]
+    if os_name == "nt":
+        inkscape_path = "D:\\Program Files\\Inkscape\\bin\\inkscape.com"
+        args = [
+            "D:\\Program Files\\Inkscape\\bin\\inkscape.com",
+            in_file,
+            "--export-area-page",
+            "-w", export_width,
+            "-h", export_height,
+            "--export-type=png"
+        ]
+    else:
+        try:
+            inkscape_path = subprocess.check_output(["which", "inkscape"]).strip()
+        except subprocess.CalledProcessError:
+            raise SystemExit("ERROR: Inkscape needs to be installed to use this script.")
+        args = [
+            inkscape_path,
+            "--without-gui",
+            "-f", in_file,
+            "--export-area-page",
+            "-w", export_width,
+            "-h", export_height,
+            "--export-png=" + out_file
+        ]
     subprocess.check_call(args)
 
 def parse_args():
