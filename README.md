@@ -1,6 +1,6 @@
 # CS:GO Map Icons/Pins
 
-![dust2](80x80/collection_icon_de_dust2.png) ![inferno](80x80/collection_icon_de_inferno.png) ![mirage](80x80/collection_icon_de_mirage.png) ![nuke](80x80/collection_icon_de_nuke.png) ![overpass](80x80/collection_icon_de_overpass.png) ![train](80x80/collection_icon_de_train.png) ![vertigo](80x80/collection_icon_de_vertigo.png) & more ...
+![dust2](80x80/collection_icon_de_dust2.png) ![inferno](80x80/collection_icon_de_inferno.png) ![mirage](80x80/collection_icon_de_mirage.png) ![nuke](80x80/collection_icon_de_nuke.png) ![overpass](80x80/collection_icon_de_overpass.png) ![train](80x80/collection_icon_de_train.png) ![vertigo](80x80/collection_icon_de_vertigo.png) ![ancient](80x80/collection_icon_de_ancient.png) & more ...
 
 ---
 
@@ -32,10 +32,11 @@ Files other than 80x80 and svg are created using `svg2png.py`, a python script w
 You can use it if you want to make png of other dimensions. It works with a folder or a file as input.
 ```bash
 python svg2png svg/ --size 512x512
+
+python svg2png svg/map_icon_ar_baggage.svg --size 1024x1024
 ```
 
-It was only tested on Linux and might not work on Windows.
-
+Work out of the box on Linux, modify the path to Inkscape for Windows.
 
 ## IMPORTANT NOTE
 I do not have any rights on this pictures and this repo is just made for easier access to the icons.
